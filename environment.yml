@@ -1,0 +1,52 @@
+name: incremental_learning
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.7
+  # jupyter extensions require nodejs
+  - nodejs
+
+  ## external requirements
+  # data science requirements
+  - matplotlib
+  - pandas
+  - scikit-learn
+  - numpy
+  - mlflow
+  - jupyterlab
+  - ipywidgets
+
+  # SQL connectors
+  - sqlalchemy
+
+  # other tools
+  - tqdm
+  - requests
+  - click
+  - Sphinx
+  - coverage
+  - awscli # remove in the future
+  - flake8
+  - python-dotenv>=0.5.1
+
+  # internal dependencies, current project or other deps
+  - setuptools
+  - wheel
+
+  - nomkl
+  - pip
+
+  - pip:
+    # very strange
+    - pyodbc
+    # azureml-sdk is only available from pip for now not from conda-forge
+    - azureml-sdk
+    # seems not work when auto installed from conda-forge, using pip instead
+    - lxml
+    - xlrd
+
+    # C-Finance requirements from dev.azure.com
+    - "--editable git+git@ssh.dev.azure.com:v3/c-finance/Analytics/cf-utils@master#egg=cf_utils"
+    # this project
+    - "--editable ."
